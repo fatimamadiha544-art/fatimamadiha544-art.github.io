@@ -1,48 +1,99 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Madiha's Website</title>
-    <meta name="google-site-verification" content="knyg7G7-mGFil3sOvVmqMLv6oqY10Z7btxTFaVhsp_I" />
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
+    <!-- ===== NAVIGATION ===== -->
+
     <nav>
         <a href="#about">About Me</a>
         <a href="#skills">My Skills</a>
+        <a href="#goals">My Goals</a>
         <a href="#contact">Contact</a>
     </nav>
+
+
+    <!-- ===== MAIN CARD ===== -->
 
     <div class="card">
 
         <h1>Hello, I am Madiha!</h1>
 
-        <p>Hello! I am Madiha, a Class 10 student and I am learning web development.</p>
+        <p>
+            I am a Class 10 student learning web development and coding.
+        </p>
 
-        <p>I am a Class 10 student.</p>
 
-        <p>I am learning coding.</p>
+        <!-- ===== ABOUT ME ===== -->
 
         <h2 id="about">About Me</h2>
 
-        <p>My name is Madiha. I am a Class 10 student and I am learning web development.</p>
+        <p>
+            Hello! I'm Madiha, a Class 10 student who is passionate about
+            learning web development. I enjoy creating websites, exploring
+            coding, and improving my skills step by step. My goal is to become
+            a skilled developer and build useful websites in the future.
+        </p>
+
+
+        <!-- ===== MY SKILLS ===== -->
 
         <h2 id="skills">My Skills</h2>
+
+        <div class="skills-container">
+
+            <div class="skill-card">
+                <h3>HTML</h3>
+                <p>Building the structure of websites.</p>
+            </div>
+
+            <div class="skill-card">
+                <h3>CSS</h3>
+                <p>Designing and styling web pages.</p>
+            </div>
+
+            <div class="skill-card">
+                <h3>JavaScript</h3>
+                <p>Learning to make websites interactive.</p>
+            </div>
+
+            <div class="skill-card">
+                <h3>Responsive Design</h3>
+                <p>Creating websites that work on different screens.</p>
+            </div>
+
+            <div class="skill-card">
+                <h3>Git & GitHub</h3>
+                <p>Learning how to manage and publish code.</p>
+            </div>
+
+            <div class="skill-card">
+                <h3>Problem Solving</h3>
+                <p>Improving my ability to solve coding problems.</p>
+            </div>
+
+        </div>
+
+
+        <!-- ===== MY GOALS ===== -->
+
         <h2 id="goals">My Goals</h2>
 
-<ul class="goals">
-    <li>Become a good web developer</li>
-    <li>Learn JavaScript</li>
-    <li>Build my own websites</li>
-    <li>Earn through coding in the future</li>
-</ul>
-
-        <ul>
-            <li>HTML</li>
-            <li>CSS</li>
-            <li>JavaScript</li>
+        <ul class="goals">
+            <li>Become a skilled web developer</li>
+            <li>Learn JavaScript deeply</li>
+            <li>Build useful websites</li>
+            <li>Improve my coding skills</li>
+            <li>Earn through coding in the future</li>
         </ul>
+
+
+        <!-- ===== BUTTONS ===== -->
 
         <button onclick="document.getElementById('message').innerHTML='Thanks for visiting my website!'">
             Click Me
@@ -58,20 +109,47 @@
             Dark Mode
         </button>
 
+
+        <!-- ===== PROFILE PHOTO ===== -->
+
         <img src="photo.jpg.png" alt="My Photo">
+
+        <p class="profile-text">
+            Learning today, building my future with code.
+        </p>
+
+
+        <!-- ===== CONTACT ===== -->
 
         <h2 id="contact">Contact Me</h2>
 
-        <p>
-            Email: <a href="mailto:example@gmail.com">Contact Me</a>
-        </p>
+        <div class="contact-box">
+
+            <p>
+                Have a question or want to connect with me?
+            </p>
+
+            <a href="mailto:example@gmail.com" class="contact-button">
+                📧 Email Me
+            </a>
+
+        </div>
 
     </div>
 
-<footer>
-    <p>© 2026 Madiha's Website</p>
-    <p>Made with HTML, CSS and JavaScript</p>
-</footer>
+
+    <!-- ===== FOOTER ===== -->
+
+    <footer>
+
+        <p>© 2026 Madiha's Website</p>
+
+        <p>
+            Made with HTML, CSS and JavaScript
+        </p>
+
+    </footer>
 
 </body>
+
 </html>
