@@ -1,361 +1,576 @@
-<!DOCTYPE html>
-<html>
+/* ===== MAIN THEME ===== */
 
-<head>
-    <title>Madiha's Website</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-
-<body>
-
-<nav>
-    <a href="#about">About Me</a>
-    <a href="#skills">My Skills</a>
-    <a href="#goals">My Goals</a>
-    <a href="#feedback">Feedback</a>
-    <a href="#contact">Contact</a>
-</nav>
-
-<div class="card">
-
-    <h1>Hello, I am Madiha!</h1>
-
-    <p>
-        I am a Class 10 student learning web development and coding.
-    </p>
-
-    <h2 id="about">About Me</h2>
-
-    <p>
-        Hello! I'm Madiha, a Class 10 student who is passionate about
-        learning web development. I enjoy creating websites, exploring
-        coding, and improving my skills step by step. My goal is to become
-        a skilled developer and build useful websites in the future.
-    </p>
-
-    <h2 id="skills">My Skills</h2>
-
-    <div class="skills-container">
-
-        <div class="skill-card">
-            <h3>HTML</h3>
-            <p>Building the structure of websites.</p>
-        </div>
-
-        <div class="skill-card">
-            <h3>CSS</h3>
-            <p>Designing and styling web pages.</p>
-        </div>
-
-        <div class="skill-card">
-            <h3>JavaScript</h3>
-            <p>Learning to make websites interactive.</p>
-        </div>
-
-        <div class="skill-card">
-            <h3>Responsive Design</h3>
-            <p>Creating websites that work on different screens.</p>
-        </div>
-
-        <div class="skill-card">
-            <h3>Git & GitHub</h3>
-            <p>Learning how to manage and publish code.</p>
-        </div>
-
-        <div class="skill-card">
-            <h3>Problem Solving</h3>
-            <p>Improving my ability to solve coding problems.</p>
-        </div>
-
-    </div>
-
-    <h2 id="goals">My Goals</h2>
-
-    <ul class="goals">
-        <li>Become a skilled web developer</li>
-        <li>Learn JavaScript deeply</li>
-        <li>Build useful websites</li>
-        <li>Improve my coding skills</li>
-        <li>Earn through coding in the future</li>
-    </ul>
-
-    <h2>What Do You Think?</h2>
-
-    <p>
-        If you like my website, leave a reaction! 💜
-    </p>
-
-    <div class="reaction-box">
-
-        <button class="like-button" onclick="likeWebsite()">
-            ❤️ Like <span id="likeCount">0</span>
-        </button>
-
-        <button class="dislike-button" onclick="dislikeWebsite()">
-            👎 Dislike <span id="dislikeCount">0</span>
-        </button>
-
-    </div>
-
-    <div id="celebration">
-        🎉 Congratulations! 🎉
-        <br>
-        Thank you for supporting my website! 💜✨
-    </div>
-
-    <p id="reactionMessage" class="reaction-message">
-        Your feedback matters to me! ✨
-    </p>
-
-    <button onclick="showMessage()">
-        ✨ Click Me ✨
-    </button>
-
-    <p id="message">
-        Click the button!
-    </p>
-
-    <button onclick="lightMode()">
-        ☀️ Light Mode
-    </button>
-
-    <button onclick="darkMode()">
-        🌙 Dark Mode
-    </button>
-
-    <img src="photo.jpg.png" alt="My Photo">
-
-    <p class="profile-text">
-        Learning today, building my future with code.
-    </p>
-
-    <h2 id="feedback">Your Feedback</h2>
-
-    <div class="feedback-box">
-
-        <p>
-            Tell me what I can improve on my website. 💡
-        </p>
-
-        <textarea
-            id="feedbackText"
-            placeholder="Write your feedback here..."
-            rows="4"></textarea>
-
-        <button onclick="sendFeedback()">
-            💌 Send Feedback
-        </button>
-
-        <p id="feedbackMessage"></p>
-
-    </div>
-
-    <h2 id="contact">Contact Me</h2>
-
-    <div class="contact-box">
-
-        <p>
-            Have a question or want to connect with me?
-        </p>
-
-        <a href="mailto:example@gmail.com" class="contact-button">
-            📧 Email Me
-        </a>
-
-    </div>
-
-</div>
-
-<footer>
-
-    <p>© 2026 Madiha's Website</p>
-
-    <p>
-        Made with HTML, CSS and JavaScript
-    </p>
-
-</footer>
-
-
-<script>
-
-let likes = localStorage.getItem("likes") || 0;
-let dislikes = localStorage.getItem("dislikes") || 0;
-
-document.getElementById("likeCount").innerText = likes;
-document.getElementById("dislikeCount").innerText = dislikes;
-
-
-function likeWebsite() {
-
-    likes++;
-
-    localStorage.setItem("likes", likes);
-
-    document.getElementById("likeCount").innerText = likes;
-
-    document.getElementById("reactionMessage").innerText =
-        "Thank you for liking my website! ❤️✨";
-
-    document.getElementById("celebration").style.display =
-        "block";
-
-    createConfetti();
+body {
+    background: #dbeafe;
+    color: #334155;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 35px;
+    min-height: 100vh;
+    transition: 0.5s;
 }
 
 
-function dislikeWebsite() {
+/* ===== NAVIGATION ===== */
 
-    dislikes++;
+nav {
+    background: #fff7ed;
+    padding: 16px;
+    border-radius: 18px;
+    margin-bottom: 30px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+}
 
-    localStorage.setItem("dislikes", dislikes);
+nav a {
+    color: #7c3aed;
+    text-decoration: none;
+    margin: 0 15px;
+    font-size: 17px;
+    font-weight: bold;
+    transition: 0.3s;
+}
 
-    document.getElementById("dislikeCount").innerText = dislikes;
-
-    document.getElementById("reactionMessage").innerText =
-        "Thanks for your honest feedback! 💜";
-
-    document.getElementById("celebration").style.display =
-        "none";
+nav a:hover {
+    color: #db2777;
 }
 
 
-function showMessage() {
+/* ===== MAIN CARD ===== */
 
-    let message = document.getElementById("message");
-
-    message.innerHTML =
-        "✨ Thanks for visiting my website! 💜 ✨";
-
-    message.style.transform = "scale(1.08)";
-
-    setTimeout(function() {
-
-        message.style.transform = "scale(1)";
-
-    }, 300);
+.card {
+    position: relative;
+    background: #ffffff;
+    color: #1e293b;
+    padding: 45px;
+    border-radius: 28px;
+    box-shadow: 0 25px 60px rgba(0,0,0,0.18);
+    max-width: 750px;
+    margin: auto;
+    animation: fadeIn 0.8s ease-in-out;
 }
 
 
-function createConfetti() {
+/* ===== HEADINGS ===== */
 
-    let emojis = [
-        "🎉",
-        "✨",
-        "💜",
-        "💙",
-        "⭐",
-        "🎊"
-    ];
+h1 {
+    color: #7c3aed;
+    font-size: 42px;
+    margin-bottom: 15px;
+}
 
-    for (let i = 0; i < 25; i++) {
+h2 {
+    color: #db2777;
+    margin-top: 45px;
+    font-size: 28px;
+}
 
-        let confetti = document.createElement("div");
 
-        confetti.innerText =
-            emojis[Math.floor(Math.random() * emojis.length)];
+/* ===== TEXT ===== */
 
-        confetti.style.position = "fixed";
-        confetti.style.top = "-20px";
-        confetti.style.left = Math.random() * 100 + "vw";
-        confetti.style.fontSize = "25px";
-        confetti.style.zIndex = "9999";
-        confetti.style.pointerEvents = "none";
+p {
+    font-size: 18px;
+    line-height: 1.6;
+    color: #475569;
+}
 
-        confetti.style.animation =
-            "sparkleFall " +
-            (1.5 + Math.random() * 2) +
-            "s linear forwards";
 
-        document.body.appendChild(confetti);
+/* ===== PROFILE PHOTO ===== */
 
-        setTimeout(function() {
-            confetti.remove();
-        }, 4000);
+.card img {
+    position: absolute;
+    top: 35px;
+    right: 35px;
+    width: 135px;
+    height: 135px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 5px solid white;
+    outline: 4px solid #f9a8d4;
+    box-shadow: 0 10px 30px rgba(236,72,153,0.25);
+    margin: 0;
+    transition: 0.4s;
+}
 
+.card img:hover {
+    transform: scale(1.07);
+}
+
+
+/* ===== ABOUT ===== */
+
+#about + p {
+    background: #fce7f3;
+    padding: 20px;
+    border-radius: 14px;
+    border-left: 5px solid #ec4899;
+}
+
+
+/* ===== SKILLS ===== */
+
+.skills-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+    margin-top: 20px;
+}
+
+.skill-card {
+    background: #fef3c7;
+    padding: 22px;
+    border-radius: 18px;
+    border: 1px solid #fde68a;
+    box-shadow: 0 8px 25px rgba(234,179,8,0.12);
+    transition: 0.35s;
+}
+
+.skill-card:nth-child(2) {
+    background: #dbeafe;
+    border-color: #bfdbfe;
+}
+
+.skill-card:nth-child(3) {
+    background: #ede9fe;
+    border-color: #ddd6fe;
+}
+
+.skill-card:nth-child(4) {
+    background: #dcfce7;
+    border-color: #bbf7d0;
+}
+
+.skill-card:nth-child(5) {
+    background: #fce7f3;
+    border-color: #fbcfe8;
+}
+
+.skill-card:nth-child(6) {
+    background: #ffedd5;
+    border-color: #fed7aa;
+}
+
+.skill-card:hover {
+    transform: translateY(-7px);
+}
+
+.skill-card h3 {
+    color: #7c3aed;
+    font-size: 21px;
+    margin: 0 0 8px;
+}
+
+.skill-card p {
+    color: #64748b;
+    font-size: 15px;
+    margin: 0;
+}
+
+
+/* ===== GOALS ===== */
+
+.goals li {
+    display: block;
+    background: #e0f2fe;
+    color: #334155;
+    padding: 14px;
+    margin: 10px 0;
+    border-radius: 12px;
+    transition: 0.3s;
+}
+
+.goals li:nth-child(2) {
+    background: #fce7f3;
+}
+
+.goals li:nth-child(3) {
+    background: #fef3c7;
+}
+
+.goals li:nth-child(4) {
+    background: #ede9fe;
+}
+
+.goals li:nth-child(5) {
+    background: #dcfce7;
+}
+
+.goals li:hover {
+    transform: translateX(5px);
+}
+
+
+/* ===== BUTTONS ===== */
+
+button {
+    background: #7c3aed;
+    color: white;
+    padding: 13px 23px;
+    border: none;
+    border-radius: 11px;
+    font-size: 16px;
+    margin: 6px;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 0 7px 20px rgba(124,58,237,0.25);
+}
+
+button:hover {
+    background: #db2777;
+    transform: translateY(-3px);
+}
+
+
+/* ===== REACTION ===== */
+
+.reaction-box {
+    margin: 25px 0;
+    padding: 20px;
+    background: #fce7f3;
+    border-radius: 20px;
+}
+
+.like-button {
+    background: #ec4899;
+}
+
+.dislike-button {
+    background: #64748b;
+}
+
+.reaction-message {
+    color: #7c3aed;
+    font-weight: bold;
+}
+
+
+/* ===== FEEDBACK ===== */
+
+.feedback-box {
+    margin-top: 25px;
+    padding: 25px;
+    background: #ede9fe;
+    border-radius: 20px;
+    border: 1px solid #ddd6fe;
+}
+
+.feedback-box textarea {
+    width: 90%;
+    padding: 14px;
+    border: 2px solid #c4b5fd;
+    border-radius: 12px;
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+    resize: vertical;
+    outline: none;
+    margin-bottom: 12px;
+}
+
+.feedback-box textarea:focus {
+    border-color: #ec4899;
+}
+
+#feedbackMessage {
+    color: #7c3aed;
+    font-weight: bold;
+}
+
+
+/* ===== CONTACT ===== */
+
+.contact-box {
+    margin-top: 25px;
+    padding: 25px;
+    background: #fef3c7;
+    border-radius: 16px;
+    border: 1px solid #fde68a;
+}
+
+.contact-button {
+    display: inline-block;
+    background: #2563eb;
+    color: white;
+    padding: 13px 27px;
+    border-radius: 11px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+
+/* ===== PROFILE TEXT ===== */
+
+.profile-text {
+    font-weight: bold;
+    color: #ec4899;
+    font-size: 18px;
+    margin-top: 18px;
+}
+
+
+/* ===== CLICK MESSAGE ===== */
+
+#message {
+    display: inline-block;
+    padding: 12px 22px;
+    border-radius: 15px;
+    font-weight: bold;
+    color: white;
+    background: #9333ea;
+    box-shadow: 0 8px 20px rgba(147,51,234,0.25);
+    transition: 0.4s;
+}
+
+
+/* ===== CONGRATULATIONS ===== */
+
+#celebration {
+    display: none;
+    margin: 20px auto;
+    padding: 18px;
+    border-radius: 18px;
+    background: #fef3c7;
+    color: #9333ea;
+    font-size: 21px;
+    font-weight: bold;
+    box-shadow: 0 10px 30px rgba(234,179,8,0.2);
+    animation: celebrationPop 0.6s ease;
+}
+
+@keyframes celebrationPop {
+    0% {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+
+    70% {
+        transform: scale(1.08);
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
     }
 }
 
 
-function sendFeedback() {
+/* ===== FALLING SPARKLES ===== */
 
-    let feedback =
-        document.getElementById("feedbackText").value;
+@keyframes sparkleFall {
+    0% {
+        transform: translateY(-30px) rotate(0deg);
+        opacity: 0;
+    }
 
-    if (feedback.trim() === "") {
+    15% {
+        opacity: 1;
+    }
 
-        document.getElementById("feedbackMessage").innerText =
-            "Please write some feedback first. 😊";
-
-    } else {
-
-        document.getElementById("feedbackMessage").innerText =
-            "Thank you for your feedback! 💜✨";
-
-        document.getElementById("feedbackText").value = "";
+    100% {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0;
     }
 }
 
 
-function darkMode() {
+/* ===== FOOTER ===== */
 
-    document.body.classList.add("dark-mode");
+footer {
+    margin-top: 30px;
+    padding: 20px;
+    background: #312e81;
+    color: white;
+    border-radius: 16px;
+}
 
+footer p {
+    color: #f5f3ff;
+    font-size: 15px;
+    margin: 5px;
 }
 
 
-function lightMode() {
+/* ===== DARK MODE ===== */
 
-    document.body.classList.remove("dark-mode");
+.dark-mode {
+    background: #0b1020;
+    color: #f8fafc;
+}
 
+.dark-mode nav {
+    background: #17152e;
+}
+
+.dark-mode nav a {
+    color: #f9a8d4;
+}
+
+.dark-mode nav a:hover {
+    color: #fcd34d;
+}
+
+.dark-mode .card {
+    background: #171827;
+    color: #f8fafc;
+    box-shadow: 0 25px 70px rgba(0,0,0,0.55);
+}
+
+.dark-mode h1 {
+    color: #d8b4fe;
+}
+
+.dark-mode h2 {
+    color: #f9a8d4;
+}
+
+.dark-mode p {
+    color: #d1d5db;
+}
+
+.dark-mode #about + p {
+    background: #302035;
+    border-left-color: #f472b6;
+}
+
+.dark-mode .skill-card {
+    background: #29223d;
+    border-color: #4c3b70;
+}
+
+.dark-mode .skill-card:nth-child(2) {
+    background: #172a46;
+}
+
+.dark-mode .skill-card:nth-child(3) {
+    background: #30204d;
+}
+
+.dark-mode .skill-card:nth-child(4) {
+    background: #17352e;
+}
+
+.dark-mode .skill-card:nth-child(5) {
+    background: #402039;
+}
+
+.dark-mode .skill-card:nth-child(6) {
+    background: #43291c;
+}
+
+.dark-mode .skill-card h3 {
+    color: #e9b8ff;
+}
+
+.dark-mode .skill-card p {
+    color: #d1d5db;
+}
+
+.dark-mode .goals li {
+    background: #172a46;
+    color: #f8fafc;
+}
+
+.dark-mode .goals li:nth-child(2) {
+    background: #402039;
+}
+
+.dark-mode .goals li:nth-child(3) {
+    background: #43291c;
+}
+
+.dark-mode .goals li:nth-child(4) {
+    background: #30204d;
+}
+
+.dark-mode .goals li:nth-child(5) {
+    background: #17352e;
+}
+
+.dark-mode .reaction-box {
+    background: #302035;
+}
+
+.dark-mode .feedback-box {
+    background: #30204d;
+    border-color: #5b3b82;
+}
+
+.dark-mode .contact-box {
+    background: #43291c;
+    border-color: #8a5a20;
+}
+
+.dark-mode #message {
+    background: #a855f7;
+}
+
+.dark-mode .profile-text {
+    color: #f9a8d4;
+}
+
+.dark-mode footer {
+    background: #030712;
 }
 
 
-function createOpeningSparkles() {
+/* ===== ANIMATION ===== */
 
-    const sparkles = [
-        "✨",
-        "⭐",
-        "💫",
-        "💗",
-        "💛",
-        "💜"
-    ];
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
 
-    for (let i = 0; i < 25; i++) {
-
-        let sparkle = document.createElement("div");
-
-        sparkle.innerText =
-            sparkles[Math.floor(Math.random() * sparkles.length)];
-
-        sparkle.style.position = "fixed";
-        sparkle.style.top = "-30px";
-        sparkle.style.left = Math.random() * 100 + "vw";
-        sparkle.style.fontSize =
-            (15 + Math.random() * 18) + "px";
-
-        sparkle.style.zIndex = "9999";
-        sparkle.style.pointerEvents = "none";
-
-        sparkle.style.animation =
-            "sparkleFall " +
-            (2 + Math.random() * 2) +
-            "s linear forwards";
-
-        document.body.appendChild(sparkle);
-
-        setTimeout(function() {
-            sparkle.remove();
-        }, 4500);
-
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 }
 
-createOpeningSparkles();
 
-</script>
+/* ===== MOBILE ===== */
 
-</body>
+@media (max-width: 600px) {
 
-</html>
+    body {
+        padding: 15px;
+    }
+
+    .card {
+        padding: 25px 20px;
+    }
+
+    h1 {
+        font-size: 30px;
+        padding-top: 100px;
+    }
+
+    h2 {
+        font-size: 24px;
+    }
+
+    nav a {
+        display: block;
+        margin: 10px 0;
+    }
+
+    .card img {
+        top: 25px;
+        right: 50%;
+        transform: translateX(50%);
+        width: 110px;
+        height: 110px;
+    }
+
+    .skills-container {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+
+    button {
+        width: 90%;
+    }
+
+    .contact-button {
+        width: 80%;
+    }
+}
