@@ -2,359 +2,545 @@
 <html>
 
 <head>
+
     <title>Madiha's Website</title>
+
     <link rel="stylesheet" href="style.css">
+
 </head>
 
 <body>
 
-<nav>
-    <a href="#about">About Me</a>
-    <a href="#skills">My Skills</a>
-    <a href="#goals">My Goals</a>
-    <a href="#feedback">Feedback</a>
-    <a href="#contact">Contact</a>
-</nav>
 
-<div class="card">
+    <!-- ===== NAVIGATION ===== -->
 
-    <h1>Hello, I am Madiha!</h1>
+    <nav>
 
-    <p>
-        I am a Class 10 student learning web development and coding.
-    </p>
+        <a href="#about">About Me</a>
 
-    <h2 id="about">About Me</h2>
+        <a href="#skills">My Skills</a>
 
-    <p>
-        Hello! I'm Madiha, a Class 10 student who is passionate about
-        learning web development. I enjoy creating websites, exploring
-        coding, and improving my skills step by step. My goal is to become
-        a skilled developer and build useful websites in the future.
-    </p>
+        <a href="#goals">My Goals</a>
 
-    <h2 id="skills">My Skills</h2>
+        <a href="#feedback">Feedback</a>
 
-    <div class="skills-container">
+        <a href="#contact">Contact</a>
 
-        <div class="skill-card">
-            <h3>HTML</h3>
-            <p>Building the structure of websites.</p>
-        </div>
+    </nav>
 
-        <div class="skill-card">
-            <h3>CSS</h3>
-            <p>Designing and styling web pages.</p>
-        </div>
 
-        <div class="skill-card">
-            <h3>JavaScript</h3>
-            <p>Learning to make websites interactive.</p>
-        </div>
+    <!-- ===== MAIN CARD ===== -->
 
-        <div class="skill-card">
-            <h3>Responsive Design</h3>
-            <p>Creating websites that work on different screens.</p>
-        </div>
+    <div class="card">
 
-        <div class="skill-card">
-            <h3>Git & GitHub</h3>
-            <p>Learning how to manage and publish code.</p>
-        </div>
 
-        <div class="skill-card">
-            <h3>Problem Solving</h3>
-            <p>Improving my ability to solve coding problems.</p>
-        </div>
-
-    </div>
-
-    <h2 id="goals">My Goals</h2>
-
-    <ul class="goals">
-        <li>Become a skilled web developer</li>
-        <li>Learn JavaScript deeply</li>
-        <li>Build useful websites</li>
-        <li>Improve my coding skills</li>
-        <li>Earn through coding in the future</li>
-    </ul>
-
-    <h2>What Do You Think?</h2>
-
-    <p>
-        If you like my website, leave a reaction! 💜
-    </p>
-
-    <div class="reaction-box">
-
-        <button class="like-button" onclick="likeWebsite()">
-            ❤️ Like <span id="likeCount">0</span>
-        </button>
-
-        <button class="dislike-button" onclick="dislikeWebsite()">
-            👎 Dislike <span id="dislikeCount">0</span>
-        </button>
-
-    </div>
-
-    <div id="celebration">
-        🎉 Congratulations! 🎉
-        <br>
-        Thank you for supporting my website! 💜✨
-    </div>
-
-    <p id="reactionMessage" class="reaction-message">
-        Your feedback matters to me! ✨
-    </p>
-
-    <button onclick="showMessage()">
-        ✨ Click Me ✨
-    </button>
-
-    <p id="message">
-        Click the button!
-    </p>
-
-    <button onclick="lightMode()">
-        ☀️ Light Mode
-    </button>
-
-    <button onclick="darkMode()">
-        🌙 Dark Mode
-    </button>
-
-    <img src="photo.jpg.png" alt="My Photo">
-
-    <p class="profile-text">
-        Learning today, building my future with code.
-    </p>
-
-    <h2 id="feedback">Your Feedback</h2>
-
-    <div class="feedback-box">
+        <h1>Hello, I am Madiha!</h1>
 
         <p>
-            Tell me what I can improve on my website. 💡
+            I am a Class 10 student learning web development and coding.
         </p>
 
-        <textarea
-            id="feedbackText"
-            placeholder="Write your feedback here..."
-            rows="4"></textarea>
 
-        <button onclick="sendFeedback()">
-            💌 Send Feedback
-        </button>
+        <!-- ===== ABOUT ===== -->
 
-        <p id="feedbackMessage"></p>
-
-    </div>
-
-    <h2 id="contact">Contact Me</h2>
-
-    <div class="contact-box">
+        <h2 id="about">About Me</h2>
 
         <p>
-            Have a question or want to connect with me?
+            Hello! I'm Madiha, a Class 10 student who is passionate about
+            learning web development. I enjoy creating websites, exploring
+            coding, and improving my skills step by step. My goal is to become
+            a skilled developer and build useful websites in the future.
         </p>
 
-        <a href="mailto:example@gmail.com" class="contact-button">
-            📧 Email Me
-        </a>
 
-    </div>
+        <!-- ===== SKILLS ===== -->
 
+        <h2 id="skills">My Skills</h2>
+
+        <div class="skills-container">
+
+            <div class="skill-card">
+                <h3>HTML</h3>
+                <p>Building the structure of websites.</p>
+            </div>
+
+            <div class="skill-card">
+                <h3>CSS</h3>
+                <p>Designing and styling web pages.</p>
+            </div>
+
+            <div class="skill-card">
+                <h3>JavaScript</h3>
+                <p>Learning to make websites interactive.</p>
+            </div>
+
+            <div class="skill-card">
+                <h3>Responsive Design</h3>
+                <p>Creating websites that work on different screens.</p>
+            </div>
+
+            <div class="skill-card">
+                <h3>Git & GitHub</h3>
+                <p>Learning how to manage and publish code.</p>
+            </div>
+
+            <div class="skill-card">
+                <h3>Problem Solving</h3>
+                <p>Improving my ability to solve coding problems.</p>
+            </div>
+
+        </div>
+
+
+        <!-- ===== GOALS ===== -->
+
+        <h2 id="goals">My Goals</h2>
+
+        <ul class="goals">
+
+            <li>Become a skilled web developer</li>
+
+            <li>Learn JavaScript deeply</li>
+
+            <li>Build useful websites</li>
+
+            <li>Improve my coding skills</li>
+
+            <li>Earn through coding in the future</li>
+
+        </ul>
+
+
+        <!-- ===== LIKE / DISLIKE ===== -->
+<div class="visitor-counter">
+    👀 Total Visitors: <span id="visitorCount">Loading...</span>
 </div>
+        <h2>What Do You Think?</h2>
 
-<footer>
+        <p>
+            If you like my website, leave a reaction! 💜
+        </p>
 
-    <p>© 2026 Madiha's Website</p>
+        <div class="reaction-box">
 
-    <p>
-        Made with HTML, CSS and JavaScript
-    </p>
+            <button
+                class="like-button"
+                onclick="likeWebsite()">
 
-</footer>
+                ❤️ Like <span id="likeCount">0</span>
 
+            </button>
 
-<script>
+            <button
+                class="dislike-button"
+                onclick="dislikeWebsite()">
 
-let likes = localStorage.getItem("likes") || 0;
-let dislikes = localStorage.getItem("dislikes") || 0;
+                👎 Dislike <span id="dislikeCount">0</span>
 
-document.getElementById("likeCount").innerText = likes;
-document.getElementById("dislikeCount").innerText = dislikes;
+            </button>
 
-
-function likeWebsite() {
-
-    likes++;
-
-    localStorage.setItem("likes", likes);
-
-    document.getElementById("likeCount").innerText = likes;
-
-    document.getElementById("reactionMessage").innerText =
-        "Thank you for liking my website! ❤️✨";
-
-    document.getElementById("celebration").style.display =
-        "block";
-
-    createConfetti();
-}
+        </div>
 
 
-function dislikeWebsite() {
+        <div id="celebration">
 
-    dislikes++;
+            🎉 Congratulations! 🎉
 
-    localStorage.setItem("dislikes", dislikes);
+            <br>
 
-    document.getElementById("dislikeCount").innerText = dislikes;
+            Thank you for supporting my website! 💜✨
 
-    document.getElementById("reactionMessage").innerText =
-        "Thanks for your honest feedback! 💜";
-
-    document.getElementById("celebration").style.display =
-        "none";
-}
+        </div>
 
 
-function showMessage() {
+        <p
+            id="reactionMessage"
+            class="reaction-message">
 
-    let message = document.getElementById("message");
+            Your feedback matters to me! ✨
 
-    message.innerHTML =
-        "✨ Thanks for visiting my website! 💜 ✨";
-
-    message.style.transform = "scale(1.08)";
-
-    setTimeout(function() {
-
-        message.style.transform = "scale(1)";
-
-    }, 300);
-}
+        </p>
 
 
-function createConfetti() {
+        <!-- ===== CLICK ME ===== -->
 
-    let emojis = [
-        "🎉",
-        "✨",
-        "💜",
-        "💙",
-        "⭐",
-        "🎊"
-    ];
+        <button onclick="showMessage()">
 
-    for (let i = 0; i < 25; i++) {
+            ✨ Click Me ✨
 
-        let confetti = document.createElement("div");
+        </button>
 
-        confetti.innerText =
-            emojis[Math.floor(Math.random() * emojis.length)];
+        <p id="message">
+            Click the button!
+        </p>
 
-        confetti.style.position = "fixed";
-        confetti.style.top = "-20px";
-        confetti.style.left = Math.random() * 100 + "vw";
-        confetti.style.fontSize = "25px";
-        confetti.style.zIndex = "9999";
-        confetti.style.pointerEvents = "none";
 
-        confetti.style.animation =
-            "sparkleFall " +
-            (1.5 + Math.random() * 2) +
-            "s linear forwards";
+        <!-- ===== LIGHT / DARK ===== -->
 
-        document.body.appendChild(confetti);
+        <button onclick="lightMode()">
+            ☀️ Light Mode
+        </button>
 
-        setTimeout(function() {
-            confetti.remove();
-        }, 4000);
+        <button onclick="darkMode()">
+            🌙 Dark Mode
+        </button>
 
+
+        <!-- ===== PROFILE PHOTO ===== -->
+
+        <img
+            src="photo.jpg.png"
+            alt="My Photo">
+
+
+        <p class="profile-text">
+
+            Learning today, building my future with code.
+
+        </p>
+
+
+        <!-- ===== FEEDBACK ===== -->
+
+        <h2 id="feedback">
+            Your Feedback
+        </h2>
+
+        <div class="feedback-box">
+
+            <p>
+                Tell me what I can improve on my website. 💡
+            </p>
+
+            <textarea
+                id="feedbackText"
+                placeholder="Write your feedback here..."
+                rows="4"></textarea>
+
+            <button onclick="sendFeedback()">
+
+                💌 Send Feedback
+
+            </button>
+
+            <p id="feedbackMessage"></p>
+
+        </div>
+
+
+        <!-- ===== CONTACT ===== -->
+
+        <h2 id="contact">
+            Contact Me
+        </h2>
+
+        <div class="contact-box">
+
+            <p>
+                Have a question or want to connect with me?
+            </p>
+
+            <a
+                href="mailto:example@gmail.com"
+                class="contact-button">
+
+                📧 Email Me
+
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <!-- ===== FOOTER ===== -->
+
+    <footer>
+
+        <p>© 2026 Madiha's Website</p>
+
+        <p>
+            Made with HTML, CSS and JavaScript
+        </p>
+
+    </footer>
+
+
+    <!-- ===== JAVASCRIPT ===== -->
+
+    <script>
+
+
+        /* ===== LIKE / DISLIKE ===== */
+
+        let likes =
+            localStorage.getItem("likes") || 0;
+
+        let dislikes =
+            localStorage.getItem("dislikes") || 0;
+
+
+        document.getElementById("likeCount").innerText =
+            likes;
+
+        document.getElementById("dislikeCount").innerText =
+            dislikes;
+
+
+        function likeWebsite() {
+
+            likes++;
+
+            localStorage.setItem("likes", likes);
+
+            document.getElementById("likeCount").innerText =
+                likes;
+
+            document.getElementById("reactionMessage").innerText =
+                "Thank you for liking my website! ❤️✨";
+
+            document.getElementById("celebration").style.display =
+                "block";
+
+            createConfetti();
+        }
+
+
+        function dislikeWebsite() {
+
+            dislikes++;
+
+            localStorage.setItem("dislikes", dislikes);
+
+            document.getElementById("dislikeCount").innerText =
+                dislikes;
+
+            document.getElementById("reactionMessage").innerText =
+                "Thanks for your honest feedback! 💜";
+
+            document.getElementById("celebration").style.display =
+                "none";
+        }
+
+
+        /* ===== CLICK ME ===== */
+
+        function showMessage() {
+
+            let message =
+                document.getElementById("message");
+
+            message.innerHTML =
+                "✨ Thanks for visiting my website! 💜 ✨";
+
+            message.style.transform =
+                "scale(1.08)";
+
+            setTimeout(function() {
+
+                message.style.transform =
+                    "scale(1)";
+
+            }, 300);
+        }
+
+
+        /* ===== CONFETTI ===== */
+
+        function createConfetti() {
+
+            let emojis = [
+                "🎉",
+                "✨",
+                "💜",
+                "💙",
+                "⭐",
+                "🎊"
+            ];
+
+            for (
+                let i = 0;
+                i < 25;
+                i++
+            ) {
+
+                let confetti =
+                    document.createElement("div");
+
+                confetti.className =
+                    "confetti";
+
+                confetti.innerText =
+                    emojis[
+                        Math.floor(
+                            Math.random() *
+                            emojis.length
+                        )
+                    ];
+
+                confetti.style.position =
+                    "fixed";
+
+                confetti.style.top =
+                    "-20px";
+
+                confetti.style.left =
+                    Math.random() * 100 + "vw";
+
+                confetti.style.fontSize =
+                    "25px";
+
+                confetti.style.zIndex =
+                    "9999";
+
+                confetti.style.pointerEvents =
+                    "none";
+
+                confetti.style.animation =
+                    "sparkleFall " +
+                    (1.5 + Math.random() * 2) +
+                    "s linear forwards";
+
+                document.body.appendChild(confetti);
+
+                setTimeout(function() {
+
+                    confetti.remove();
+
+                }, 4000);
+
+            }
+        }
+
+
+        /* ===== FEEDBACK ===== */
+
+        function sendFeedback() {
+
+            let feedback =
+                document.getElementById("feedbackText").value;
+
+            if (feedback.trim() === "") {
+
+                document.getElementById("feedbackMessage").innerText =
+                    "Please write some feedback first. 😊";
+
+            } else {
+
+                document.getElementById("feedbackMessage").innerText =
+                    "Thank you for your feedback! 💜✨";
+
+                document.getElementById("feedbackText").value =
+                    "";
+            }
+        }
+
+
+        /* ===== DARK MODE ===== */
+
+        function darkMode() {
+
+            document.body.classList.add("dark-mode");
+
+        }
+
+
+        /* ===== LIGHT MODE ===== */
+
+        function lightMode() {
+
+            document.body.classList.remove("dark-mode");
+
+        }
+
+
+        /* ===== OPENING SPARKLES ===== */
+
+        function createOpeningSparkles() {
+
+            const sparkles = [
+                "✨",
+                "⭐",
+                "💫",
+                "💗",
+                "💛",
+                "💜"
+            ];
+
+            for (
+                let i = 0;
+                i < 25;
+                i++
+            ) {
+
+                let sparkle =
+                    document.createElement("div");
+
+                sparkle.innerText =
+                    sparkles[
+                        Math.floor(
+                            Math.random() *
+                            sparkles.length
+                        )
+                    ];
+
+                sparkle.style.position =
+                    "fixed";
+
+                sparkle.style.top =
+                    "-30px";
+
+                sparkle.style.left =
+                    Math.random() * 100 + "vw";
+
+                sparkle.style.fontSize =
+                    (15 + Math.random() * 18) + "px";
+
+                sparkle.style.zIndex =
+                    "9999";
+
+                sparkle.style.pointerEvents =
+                    "none";
+
+                sparkle.style.animation =
+                    "sparkleFall " +
+                    (2 + Math.random() * 2) +
+                    "s linear forwards";
+
+                document.body.appendChild(sparkle);
+
+                setTimeout(function() {
+
+                    sparkle.remove();
+
+                }, 4500);
+
+            }
+        }
+
+
+        createOpeningSparkles();
+const SUPABASE_URL = "https://qcaawvyacrlyxzxrufvm.supabase.co";
+const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_9vDR8I_AxLzCZXSGpx6FeA_PQICTbda";
+
+fetch(`${SUPABASE_URL}/rest/v1/rpc/increment_visitors`, {
+    method: "POST",
+    headers: {
+        "apikey": SUPABASE_PUBLISHABLE_KEY,
+        "Authorization": `Bearer ${SUPABASE_PUBLISHABLE_KEY}`,
+        "Content-Type": "application/json"
     }
-}
+})
+.then(response => response.json())
+.then(data => {
+    document.getElementById("visitorCount").innerText = data;
+})
+.catch(error => {
+    document.getElementById("visitorCount").innerText = "—";
+});
 
+    </script>
 
-function sendFeedback() {
-
-    let feedback =
-        document.getElementById("feedbackText").value;
-
-    if (feedback.trim() === "") {
-
-        document.getElementById("feedbackMessage").innerText =
-            "Please write some feedback first. 😊";
-
-    } else {
-
-        document.getElementById("feedbackMessage").innerText =
-            "Thank you for your feedback! 💜✨";
-
-        document.getElementById("feedbackText").value = "";
-    }
-}
-
-
-function darkMode() {
-
-    document.body.classList.add("dark-mode");
-
-}
-
-
-function lightMode() {
-
-    document.body.classList.remove("dark-mode");
-
-}
-
-
-function createOpeningSparkles() {
-
-    const sparkles = [
-        "✨",
-        "⭐",
-        "💫",
-        "💗",
-        "💛",
-        "💜"
-    ];
-
-    for (let i = 0; i < 25; i++) {
-
-        let sparkle = document.createElement("div");
-
-        sparkle.innerText =
-            sparkles[Math.floor(Math.random() * sparkles.length)];
-
-        sparkle.style.position = "fixed";
-        sparkle.style.top = "-30px";
-        sparkle.style.left = Math.random() * 100 + "vw";
-        sparkle.style.fontSize =
-            (15 + Math.random() * 18) + "px";
-
-        sparkle.style.zIndex = "9999";
-        sparkle.style.pointerEvents = "none";
-
-        sparkle.style.animation =
-            "sparkleFall " +
-            (2 + Math.random() * 2) +
-            "s linear forwards";
-
-        document.body.appendChild(sparkle);
-
-        setTimeout(function() {
-            sparkle.remove();
-        }, 4500);
-
-    }
-}
-
-createOpeningSparkles();
-
-</script>
 
 </body>
 
