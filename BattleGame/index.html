@@ -1,0 +1,1752 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+<title>Mini Free Fire</title>
+<link rel="icon" type="image/png" href="MiniFreeFireLogo.png">
+
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+    user-select:none;
+}
+
+html,body{
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    background:#000;
+    font-family:Arial,Helvetica,sans-serif;
+}
+
+button{
+    font-family:inherit;
+}
+
+.screen{
+    position:fixed;
+    inset:0;
+    z-index:1000;
+    background:#000;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+/* =========================
+   LOGO SCREEN
+========================= */
+
+#logoScreen{
+    display:flex;
+}
+
+#logoScreen img{
+    width:min(80vw,650px);
+    max-height:70vh;
+    object-fit:contain;
+    animation:logoIntro 1.5s ease;
+}
+
+@keyframes logoIntro{
+    0%{
+        opacity:0;
+        transform:scale(.75);
+    }
+    100%{
+        opacity:1;
+        transform:scale(1);
+    }
+}
+
+/* =========================
+   LOADING SCREEN
+========================= */
+
+#loadingScreen{
+    display:none;
+    flex-direction:column;
+    gap:20px;
+}
+
+.openingImage{
+    width:min(88vw,1000px);
+    max-height:72vh;
+    object-fit:contain;
+    border-radius:12px;
+}
+
+.loadingArea{
+    width:min(520px,75vw);
+    text-align:center;
+}
+
+.loadingBar{
+    width:100%;
+    height:10px;
+    background:#182033;
+    border-radius:20px;
+    overflow:hidden;
+    box-shadow:0 0 15px rgba(50,130,255,.5);
+}
+
+#loadingProgress{
+    width:0%;
+    height:100%;
+    background:#3185ff;
+    transition:width:.1s linear;
+}
+
+#loadingText{
+    margin-top:10px;
+    color:#72aaff;
+    font-size:13px;
+    letter-spacing:4px;
+}
+
+/* =========================
+   LOGIN SCREEN
+========================= */
+
+#loginScreen{
+    display:none;
+    background:
+        radial-gradient(circle at center,#15243e 0,#05080f 45%,#000 100%);
+    flex-direction:column;
+}
+
+.loginBox{
+    width:min(420px,88vw);
+    padding:35px 28px;
+    border-radius:22px;
+    background:rgba(10,15,27,.9);
+    border:1px solid rgba(90,150,255,.35);
+    box-shadow:0 0 50px rgba(30,100,255,.2);
+    text-align:center;
+}
+
+.loginLogo{
+    width:150px;
+    max-width:60%;
+    margin-bottom:20px;
+}
+
+.loginTitle{
+    color:white;
+    font-size:27px;
+    margin-bottom:8px;
+}
+
+.loginSubtitle{
+    color:#9ca9bf;
+    font-size:14px;
+    margin-bottom:28px;
+}
+
+.loginButton{
+    width:100%;
+    height:52px;
+    border:none;
+    border-radius:10px;
+    margin-top:12px;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.loginButton:hover{
+    transform:translateY(-2px);
+}
+
+.googleBtn{
+    background:white;
+    color:#222;
+}
+
+.facebookBtn{
+    background:#1877f2;
+    color:white;
+}
+
+.loginNote{
+    color:#66738b;
+    font-size:11px;
+    margin-top:20px;
+    line-height:1.5;
+}
+
+/* =========================
+   GAME
+========================= */
+
+#gameScreen{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:#182b1c;
+}
+
+#gameCanvas{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    display:block;
+    background:#243d27;
+}
+
+/* =========================
+   HUD
+========================= */
+
+.hud{
+    position:absolute;
+    top:15px;
+    left:15px;
+    right:15px;
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    pointer-events:none;
+    z-index:20;
+}
+
+.hudLeft,
+.hudRight{
+    display:flex;
+    gap:8px;
+    flex-wrap:wrap;
+}
+
+.hudBox{
+    min-width:100px;
+    padding:9px 13px;
+    border-radius:10px;
+    background:rgba(0,0,0,.58);
+    color:white;
+    border:1px solid rgba(255,255,255,.15);
+    backdrop-filter:blur(5px);
+    font-size:13px;
+}
+
+.hudLabel{
+    color:#9fb0c9;
+    font-size:10px;
+    margin-bottom:3px;
+}
+
+.healthBar{
+    width:120px;
+    height:8px;
+    border-radius:10px;
+    overflow:hidden;
+    background:#301414;
+}
+
+#healthFill{
+    width:100%;
+    height:100%;
+    background:#36d879;
+}
+
+.blankActionBox{
+    width:120px;
+    height:43px;
+    border-radius:10px;
+    background:rgba(0,0,0,.35);
+    border:1px solid rgba(255,255,255,.08);
+}
+
+/* =========================
+   SAFE ZONE
+========================= */
+
+.safeZoneInfo{
+    position:absolute;
+    top:95px;
+    left:50%;
+    transform:translateX(-50%);
+    padding:8px 15px;
+    border-radius:20px;
+    background:rgba(0,0,0,.55);
+    color:white;
+    font-size:12px;
+    z-index:20;
+    pointer-events:none;
+}
+
+/* =========================
+   CONTROLS
+========================= */
+
+.controls{
+    position:absolute;
+    inset:0;
+    pointer-events:none;
+    z-index:30;
+}
+
+.joystick{
+    position:absolute;
+    left:25px;
+    bottom:25px;
+    width:135px;
+    height:135px;
+    border-radius:50%;
+    background:rgba(0,0,0,.25);
+    border:2px solid rgba(255,255,255,.18);
+    pointer-events:auto;
+    touch-action:none;
+}
+
+.joystickKnob{
+    position:absolute;
+    width:55px;
+    height:55px;
+    border-radius:50%;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%);
+    background:rgba(255,255,255,.35);
+    border:2px solid rgba(255,255,255,.5);
+}
+
+.actionButton{
+    position:absolute;
+    right:30px;
+    bottom:35px;
+    width:90px;
+    height:90px;
+    border-radius:50%;
+    border:2px solid rgba(255,255,255,.35);
+    background:rgba(40,100,220,.5);
+    color:white;
+    font-weight:bold;
+    pointer-events:auto;
+    touch-action:none;
+}
+
+.actionButton:active{
+    transform:scale(.94);
+    background:rgba(70,140,255,.7);
+}
+
+/* =========================
+   START / GAME OVER
+========================= */
+
+#messageScreen{
+    position:absolute;
+    inset:0;
+    display:none;
+    justify-content:center;
+    align-items:center;
+    z-index:100;
+    background:rgba(0,0,0,.65);
+}
+
+.messageBox{
+    width:min(400px,85vw);
+    padding:30px;
+    text-align:center;
+    border-radius:18px;
+    background:#0b1220;
+    color:white;
+    border:1px solid #31415c;
+}
+
+.messageBox h2{
+    font-size:28px;
+    margin-bottom:10px;
+}
+
+.messageBox p{
+    color:#aab5c8;
+    margin-bottom:22px;
+}
+
+.mainButton{
+    padding:13px 30px;
+    border:0;
+    border-radius:10px;
+    background:#2563eb;
+    color:white;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+/* =========================
+   DESKTOP HELP
+========================= */
+
+.helpText{
+    position:absolute;
+    bottom:12px;
+    left:50%;
+    transform:translateX(-50%);
+    color:rgba(255,255,255,.65);
+    font-size:11px;
+    pointer-events:none;
+    z-index:20;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:700px){
+
+    .hud{
+        top:8px;
+        left:8px;
+        right:8px;
+    }
+
+    .hudBox{
+        min-width:auto;
+        padding:7px 9px;
+        font-size:11px;
+    }
+
+    .healthBar{
+        width:85px;
+    }
+
+    .blankActionBox{
+        width:75px;
+        height:35px;
+    }
+
+    .safeZoneInfo{
+        top:75px;
+    }
+
+    .helpText{
+        display:none;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- =========================
+     STEP 1: LOGO
+========================= -->
+
+<div id="logoScreen" class="screen">
+    <img src="MiniFreeFireLogo.png" alt="Mini Free Fire">
+</div>
+
+
+<!-- =========================
+     STEP 2: OPENING + LOADING
+========================= -->
+
+<div id="loadingScreen" class="screen">
+
+    <img
+        src="MiniFreeFireOpening.png"
+        class="openingImage"
+        alt="Mini Free Fire Opening"
+    >
+
+    <div class="loadingArea">
+
+        <div class="loadingBar">
+            <div id="loadingProgress"></div>
+        </div>
+
+        <div id="loadingText">
+            LOADING... 0%
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     STEP 3: LOGIN
+========================= -->
+
+<div id="loginScreen" class="screen">
+
+    <div class="loginBox">
+
+        <img
+            src="MiniFreeFireLogo.png"
+            class="loginLogo"
+            alt="Mini Free Fire"
+        >
+
+        <div class="loginTitle">
+            Welcome
+        </div>
+
+        <div class="loginSubtitle">
+            Sign in to continue
+        </div>
+
+        <button
+            class="loginButton googleBtn"
+            onclick="continueLogin('Google')"
+        >
+            Continue with Google
+        </button>
+
+        <button
+            class="loginButton facebookBtn"
+            onclick="continueLogin('Facebook')"
+        >
+            Continue with Facebook
+        </button>
+
+        <div class="loginNote">
+            This screen is currently a game UI demo.
+            Real Google/Facebook authentication requires
+            proper OAuth configuration.
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     GAME
+========================= -->
+
+<div id="gameScreen">
+
+    <canvas id="gameCanvas"></canvas>
+
+    <!-- HUD -->
+
+    <div class="hud">
+
+        <div class="hudLeft">
+
+            <div class="hudBox">
+                <div class="hudLabel">PLAYER</div>
+                MADIHA
+            </div>
+
+            <div class="hudBox">
+                <div class="hudLabel">HEALTH</div>
+
+                <div class="healthBar">
+                    <div id="healthFill"></div>
+                </div>
+
+            </div>
+
+            <div class="hudBox">
+                <div class="hudLabel">SCORE</div>
+                <span id="scoreText">0</span>
+            </div>
+
+        </div>
+
+        <div class="hudRight">
+
+            <!-- INTENTIONALLY BLANK -->
+            <div class="blankActionBox"></div>
+
+        </div>
+
+    </div>
+
+
+    <div class="safeZoneInfo">
+        SAFE ZONE: <span id="zoneText">100%</span>
+    </div>
+
+
+    <!-- CONTROLS -->
+
+    <div class="controls">
+
+        <div
+            id="joystick"
+            class="joystick"
+        >
+            <div
+                id="joystickKnob"
+                class="joystickKnob"
+            ></div>
+        </div>
+
+        <button
+            id="actionButton"
+            class="actionButton"
+        >
+            ACTION
+        </button>
+
+    </div>
+
+
+    <div class="helpText">
+        WASD / Arrow Keys to move • Collect energy orbs • Stay inside the safe zone
+    </div>
+
+
+    <!-- MESSAGE -->
+
+    <div id="messageScreen">
+
+        <div class="messageBox">
+
+            <h2 id="messageTitle">
+                MINI FREE FIRE
+            </h2>
+
+            <p id="messageText">
+                Ready?
+            </p>
+
+            <button
+                class="mainButton"
+                onclick="startGame()"
+            >
+                START GAME
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+/* =========================================================
+   SCREEN FLOW
+========================================================= */
+
+const logoScreen =
+    document.getElementById("logoScreen");
+
+const loadingScreen =
+    document.getElementById("loadingScreen");
+
+const loginScreen =
+    document.getElementById("loginScreen");
+
+const gameScreen =
+    document.getElementById("gameScreen");
+
+let loadingProgress = 0;
+
+
+/* STEP 1 → STEP 2 */
+
+setTimeout(() => {
+
+    logoScreen.style.display = "none";
+    loadingScreen.style.display = "flex";
+
+    startLoading();
+
+}, 2200);
+
+
+/* LOADING */
+
+function startLoading(){
+
+    const timer = setInterval(() => {
+
+        loadingProgress += 2;
+
+        document.getElementById("loadingProgress")
+            .style.width = loadingProgress + "%";
+
+        document.getElementById("loadingText")
+            .innerText =
+            "LOADING... " + loadingProgress + "%";
+
+        if(loadingProgress >= 100){
+
+            clearInterval(timer);
+
+            document.getElementById("loadingText")
+                .innerText = "READY";
+
+            setTimeout(() => {
+
+                loadingScreen.style.display = "none";
+                loginScreen.style.display = "flex";
+
+            },700);
+        }
+
+    },70);
+}
+
+
+/* LOGIN UI */
+
+function continueLogin(provider){
+
+    /*
+       Demo login.
+       Real OAuth can be connected later.
+    */
+
+    loginScreen.style.display = "none";
+
+    gameScreen.style.display = "block";
+
+    showMessage(
+        "WELCOME",
+        provider + " login selected.\nStarting game..."
+    );
+}
+
+
+/* =========================================================
+   CANVAS
+========================================================= */
+
+const canvas =
+    document.getElementById("gameCanvas");
+
+const ctx =
+    canvas.getContext("2d");
+
+let width = 0;
+let height = 0;
+
+function resizeCanvas(){
+
+    width = window.innerWidth;
+    height = window.innerHeight;
+
+    canvas.width = width * devicePixelRatio;
+    canvas.height = height * devicePixelRatio;
+
+    canvas.style.width = width + "px";
+    canvas.style.height = height + "px";
+
+    ctx.setTransform(
+        devicePixelRatio,
+        0,
+        0,
+        devicePixelRatio,
+        0,
+        0
+    );
+}
+
+window.addEventListener("resize", resizeCanvas);
+
+resizeCanvas();
+
+
+/* =========================================================
+   WORLD
+========================================================= */
+
+const world = {
+    width:2400,
+    height:1800
+};
+
+let camera = {
+    x:0,
+    y:0
+};
+
+
+/* =========================================================
+   PLAYER
+========================================================= */
+
+const player = {
+
+    x:1200,
+    y:900,
+
+    radius:24,
+
+    speed:4.2,
+
+    health:100,
+
+    score:0,
+
+    dx:0,
+    dy:0
+
+};
+
+
+/* =========================================================
+   ENEMIES
+========================================================= */
+
+let enemies = [];
+
+function createEnemies(){
+
+    enemies = [];
+
+    for(let i=0;i<12;i++){
+
+        let x =
+            200 + Math.random() *
+            (world.width - 400);
+
+        let y =
+            200 + Math.random() *
+            (world.height - 400);
+
+        enemies.push({
+
+            x:x,
+            y:y,
+
+            radius:20,
+
+            speed:1.15 + Math.random()*.5,
+
+            color:"#c94b55",
+
+            damageTimer:0
+
+        });
+    }
+}
+
+
+/* =========================================================
+   ENERGY ORBS
+========================================================= */
+
+let orbs = [];
+
+function createOrbs(){
+
+    orbs = [];
+
+    for(let i=0;i<35;i++){
+
+        orbs.push({
+
+            x:100 + Math.random() *
+                (world.width-200),
+
+            y:100 + Math.random() *
+                (world.height-200),
+
+            radius:8,
+
+            pulse:Math.random()*Math.PI*2
+
+        });
+
+    }
+}
+
+
+/* =========================================================
+   SAFE ZONE
+========================================================= */
+
+let safeZone = {
+
+    x:1200,
+
+    y:900,
+
+    radius:820,
+
+    minimumRadius:250,
+
+    shrinkSpeed:.025
+
+};
+
+
+function updateSafeZone(){
+
+    if(safeZone.radius >
+       safeZone.minimumRadius){
+
+        safeZone.radius -=
+            safeZone.shrinkSpeed;
+    }
+
+}
+
+
+/* =========================================================
+   INPUT
+========================================================= */
+
+const keys = {};
+
+window.addEventListener("keydown",(e)=>{
+
+    keys[e.key.toLowerCase()] = true;
+
+    if(
+        e.key === "ArrowUp" ||
+        e.key === "ArrowDown" ||
+        e.key === "ArrowLeft" ||
+        e.key === "ArrowRight"
+    ){
+
+        e.preventDefault();
+    }
+
+});
+
+window.addEventListener("keyup",(e)=>{
+
+    keys[e.key.toLowerCase()] = false;
+
+});
+
+
+/* =========================================================
+   JOYSTICK
+========================================================= */
+
+const joystick =
+    document.getElementById("joystick");
+
+const knob =
+    document.getElementById("joystickKnob");
+
+let joystickActive = false;
+
+let joystickX = 0;
+let joystickY = 0;
+
+
+function joystickMove(clientX,clientY){
+
+    const rect =
+        joystick.getBoundingClientRect();
+
+    const centerX =
+        rect.left + rect.width/2;
+
+    const centerY =
+        rect.top + rect.height/2;
+
+    let dx =
+        clientX - centerX;
+
+    let dy =
+        clientY - centerY;
+
+    const max =
+        rect.width/2 - 28;
+
+    const distance =
+        Math.sqrt(dx*dx + dy*dy);
+
+    if(distance > max){
+
+        dx =
+            dx/distance*max;
+
+        dy =
+            dy/distance*max;
+    }
+
+    joystickX = dx/max;
+    joystickY = dy/max;
+
+    knob.style.left =
+        `calc(50% + ${dx}px)`;
+
+    knob.style.top =
+        `calc(50% + ${dy}px)`;
+}
+
+
+function joystickEnd(){
+
+    joystickActive = false;
+
+    joystickX = 0;
+    joystickY = 0;
+
+    knob.style.left = "50%";
+    knob.style.top = "50%";
+}
+
+
+joystick.addEventListener(
+    "pointerdown",
+    (e)=>{
+
+        joystickActive = true;
+
+        joystick.setPointerCapture(e.pointerId);
+
+        joystickMove(
+            e.clientX,
+            e.clientY
+        );
+    }
+);
+
+
+joystick.addEventListener(
+    "pointermove",
+    (e)=>{
+
+        if(joystickActive){
+
+            joystickMove(
+                e.clientX,
+                e.clientY
+            );
+        }
+    }
+);
+
+
+joystick.addEventListener(
+    "pointerup",
+    joystickEnd
+);
+
+
+joystick.addEventListener(
+    "pointercancel",
+    joystickEnd
+);
+
+
+/* =========================================================
+   MOVEMENT
+========================================================= */
+
+function updatePlayer(){
+
+    let dx = 0;
+    let dy = 0;
+
+    if(keys["w"] || keys["arrowup"])
+        dy -= 1;
+
+    if(keys["s"] || keys["arrowdown"])
+        dy += 1;
+
+    if(keys["a"] || keys["arrowleft"])
+        dx -= 1;
+
+    if(keys["d"] || keys["arrowright"])
+        dx += 1;
+
+    if(joystickActive){
+
+        dx = joystickX;
+        dy = joystickY;
+    }
+
+    const length =
+        Math.sqrt(dx*dx + dy*dy);
+
+    if(length > 0){
+
+        dx /= length;
+        dy /= length;
+
+    }
+
+    player.dx = dx;
+    player.dy = dy;
+
+    player.x +=
+        dx * player.speed;
+
+    player.y +=
+        dy * player.speed;
+
+
+    player.x =
+        Math.max(
+            player.radius,
+            Math.min(
+                world.width-player.radius,
+                player.x
+            )
+        );
+
+    player.y =
+        Math.max(
+            player.radius,
+            Math.min(
+                world.height-player.radius,
+                player.y
+            )
+        );
+
+}
+
+
+/* =========================================================
+   ENEMIES
+========================================================= */
+
+function updateEnemies(){
+
+    enemies.forEach(enemy=>{
+
+        const dx =
+            player.x - enemy.x;
+
+        const dy =
+            player.y - enemy.y;
+
+        const distance =
+            Math.sqrt(dx*dx + dy*dy);
+
+        if(distance > 1){
+
+            enemy.x +=
+                dx/distance *
+                enemy.speed;
+
+            enemy.y +=
+                dy/distance *
+                enemy.speed;
+        }
+
+
+        if(distance <
+           player.radius + enemy.radius){
+
+            if(enemy.damageTimer <= 0){
+
+                player.health -= 5;
+
+                enemy.damageTimer = 45;
+
+                updateHealth();
+            }
+        }
+
+        if(enemy.damageTimer > 0){
+
+            enemy.damageTimer--;
+        }
+
+    });
+
+}
+
+
+/* =========================================================
+   ORB COLLECTION
+========================================================= */
+
+function updateOrbs(){
+
+    for(let i=orbs.length-1;i>=0;i--){
+
+        const orb = orbs[i];
+
+        const dx =
+            player.x-orb.x;
+
+        const dy =
+            player.y-orb.y;
+
+        const distance =
+            Math.sqrt(dx*dx+dy*dy);
+
+        if(
+            distance <
+            player.radius+orb.radius+10
+        ){
+
+            player.score += 10;
+
+            document.getElementById(
+                "scoreText"
+            ).innerText =
+                player.score;
+
+            orbs.splice(i,1);
+        }
+
+    }
+
+}
+
+
+/* =========================================================
+   SAFE ZONE DAMAGE
+========================================================= */
+
+function updateZoneDamage(){
+
+    const dx =
+        player.x-safeZone.x;
+
+    const dy =
+        player.y-safeZone.y;
+
+    const distance =
+        Math.sqrt(dx*dx+dy*dy);
+
+    if(distance > safeZone.radius){
+
+        player.health -= .08;
+
+        updateHealth();
+    }
+
+    const percentage =
+        Math.max(
+            0,
+            Math.round(
+                safeZone.radius/
+                820*100
+            )
+        );
+
+    document.getElementById(
+        "zoneText"
+    ).innerText =
+        percentage + "%";
+}
+
+
+/* =========================================================
+   HEALTH
+========================================================= */
+
+function updateHealth(){
+
+    player.health =
+        Math.max(
+            0,
+            Math.min(
+                100,
+                player.health
+            )
+        );
+
+    document.getElementById(
+        "healthFill"
+    ).style.width =
+        player.health + "%";
+
+
+    if(player.health <= 0){
+
+        gameOver();
+    }
+
+}
+
+
+/* =========================================================
+   CAMERA
+========================================================= */
+
+function updateCamera(){
+
+    camera.x =
+        player.x-width/2;
+
+    camera.y =
+        player.y-height/2;
+
+
+    camera.x =
+        Math.max(
+            0,
+            Math.min(
+                world.width-width,
+                camera.x
+            )
+        );
+
+    camera.y =
+        Math.max(
+            0,
+            Math.min(
+                world.height-height,
+                camera.y
+            )
+        );
+
+}
+
+
+/* =========================================================
+   DRAW WORLD
+========================================================= */
+
+function drawWorld(){
+
+    ctx.fillStyle="#29452b";
+
+    ctx.fillRect(
+        0,
+        0,
+        width,
+        height
+    );
+
+
+    ctx.save();
+
+    ctx.translate(
+        -camera.x,
+        -camera.y
+    );
+
+
+    /* Ground */
+
+    ctx.fillStyle="#385f3b";
+
+    ctx.fillRect(
+        0,
+        0,
+        world.width,
+        world.height
+    );
+
+
+    /* Roads */
+
+    ctx.fillStyle="#525b55";
+
+    for(let x=300;x<world.width;x+=500){
+
+        ctx.fillRect(
+            x,
+            0,
+            100,
+            world.height
+        );
+    }
+
+
+    for(let y=300;y<world.height;y+=450){
+
+        ctx.fillRect(
+            0,
+            y,
+            world.width,
+            90
+        );
+    }
+
+
+    /* Road markings */
+
+    ctx.fillStyle="#d8d39a";
+
+    for(let x=350;x<world.width;x+=500){
+
+        for(let y=0;y<world.height;y+=80){
+
+            ctx.fillRect(
+                x,
+                y,
+                8,
+                40
+            );
+        }
+    }
+
+
+    /* Houses */
+
+    const houses = [
+
+        [170,180,230,170],
+        [720,160,260,190],
+        [1450,180,260,180],
+        [1950,400,250,200],
+        [400,1200,280,200],
+        [1500,1250,300,190],
+        [1950,1050,240,180]
+
+    ];
+
+
+    houses.forEach(h=>{
+
+        ctx.fillStyle="#c6b08d";
+
+        ctx.fillRect(
+            h[0],
+            h[1],
+            h[2],
+            h[3]
+        );
+
+        ctx.fillStyle="#8d5b48";
+
+        ctx.fillRect(
+            h[0],
+            h[1],
+            h[2],
+            28
+        );
+
+        ctx.fillStyle="#70a7c9";
+
+        ctx.fillRect(
+            h[0]+35,
+            h[1]+55,
+            45,
+            35
+        );
+
+        ctx.fillRect(
+            h[0]+h[2]-80,
+            h[1]+55,
+            45,
+            35
+        );
+
+    });
+
+
+    /* Trees */
+
+    for(let i=0;i<45;i++){
+
+        const tx =
+            (i*367)%world.width;
+
+        const ty =
+            (i*229)%world.height;
+
+        ctx.fillStyle="#5c3c29";
+
+        ctx.fillRect(
+            tx-5,
+            ty,
+            10,
+            28
+        );
+
+        ctx.beginPath();
+
+        ctx.fillStyle="#173d24";
+
+        ctx.arc(
+            tx,
+            ty,
+            25,
+            0,
+            Math.PI*2
+        );
+
+        ctx.fill();
+
+    }
+
+
+    /* Safe zone */
+
+    ctx.beginPath();
+
+    ctx.arc(
+        safeZone.x,
+        safeZone.y,
+        safeZone.radius,
+        0,
+        Math.PI*2
+    );
+
+    ctx.strokeStyle=
+        "rgba(80,180,255,.9)";
+
+    ctx.lineWidth=7;
+
+    ctx.stroke();
+
+
+    /* Orbs */
+
+    orbs.forEach(orb=>{
+
+        orb.pulse += .08;
+
+        const pulse =
+            Math.sin(orb.pulse)*2;
+
+        ctx.beginPath();
+
+        ctx.arc(
+            orb.x,
+            orb.y,
+            orb.radius+pulse,
+            0,
+            Math.PI*2
+        );
+
+        ctx.fillStyle="#72e6ff";
+
+        ctx.shadowColor="#52d9ff";
+
+        ctx.shadowBlur=15;
+
+        ctx.fill();
+
+        ctx.shadowBlur=0;
+
+    });
+
+
+    /* Enemies */
+
+    enemies.forEach(enemy=>{
+
+        ctx.beginPath();
+
+        ctx.arc(
+            enemy.x,
+            enemy.y,
+            enemy.radius,
+            0,
+            Math.PI*2
+        );
+
+        ctx.fillStyle=
+            enemy.color;
+
+        ctx.fill();
+
+
+        ctx.beginPath();
+
+        ctx.arc(
+            enemy.x-6,
+            enemy.y-4,
+            3,
+            0,
+            Math.PI*2
+        );
+
+        ctx.arc(
+            enemy.x+6,
+            enemy.y-4,
+            3,
+            0,
+            Math.PI*2
+        );
+
+        ctx.fillStyle="#fff";
+
+        ctx.fill();
+
+    });
+
+
+    /* Player */
+
+    ctx.beginPath();
+
+    ctx.arc(
+        player.x,
+        player.y,
+        player.radius,
+        0,
+        Math.PI*2
+    );
+
+    ctx.fillStyle="#4d9cff";
+
+    ctx.shadowColor="#5ba7ff";
+
+    ctx.shadowBlur=18;
+
+    ctx.fill();
+
+    ctx.shadowBlur=0;
+
+
+    /* Player direction */
+
+    if(
+        player.dx !== 0 ||
+        player.dy !== 0
+    ){
+
+        ctx.beginPath();
+
+        ctx.moveTo(
+            player.x,
+            player.y
+        );
+
+        ctx.lineTo(
+            player.x +
+            player.dx*35,
+            player.y +
+            player.dy*35
+        );
+
+        ctx.strokeStyle="white";
+
+        ctx.lineWidth=4;
+
+        ctx.stroke();
+    }
+
+
+    ctx.restore();
+
+}
+
+
+/* =========================================================
+   GAME LOOP
+========================================================= */
+
+let gameRunning = false;
+
+function gameLoop(){
+
+    if(gameRunning){
+
+        updatePlayer();
+
+        updateEnemies();
+
+        updateOrbs();
+
+        updateSafeZone();
+
+        updateZoneDamage();
+
+        updateCamera();
+
+        drawWorld();
+
+    }
+
+    requestAnimationFrame(gameLoop);
+}
+
+gameLoop();
+
+
+/* =========================================================
+   START GAME
+========================================================= */
+
+function startGame(){
+
+    document.getElementById(
+        "messageScreen"
+    ).style.display="none";
+
+    player.x=1200;
+    player.y=900;
+
+    player.health=100;
+
+    player.score=0;
+
+    safeZone.radius=820;
+
+    document.getElementById(
+        "scoreText"
+    ).innerText="0";
+
+    createEnemies();
+
+    createOrbs();
+
+    updateHealth();
+
+    gameRunning=true;
+}
+
+
+/* =========================================================
+   MESSAGE
+========================================================= */
+
+function showMessage(title,text){
+
+    document.getElementById(
+        "messageTitle"
+    ).innerText=title;
+
+    document.getElementById(
+        "messageText"
+    ).innerText=text;
+
+    document.getElementById(
+        "messageScreen"
+    ).style.display="flex";
+}
+
+
+/* =========================================================
+   GAME OVER
+========================================================= */
+
+function gameOver(){
+
+    gameRunning=false;
+
+    showMessage(
+        "GAME OVER",
+        "Your score: " +
+        player.score
+    );
+}
+
+
+/* =========================================================
+   ACTION BUTTON
+========================================================= */
+
+const actionButton =
+    document.getElementById(
+        "actionButton"
+    );
+
+actionButton.addEventListener(
+    "click",
+    ()=>{
+
+        /*
+           Weapon/action area intentionally blank.
+           Button currently has no combat function.
+        */
+
+    }
+);
+
+
+/* =========================================================
+   INITIAL GAME STATE
+========================================================= */
+
+createEnemies();
+
+createOrbs();
+
+</script>
+
+</body>
+</html>
