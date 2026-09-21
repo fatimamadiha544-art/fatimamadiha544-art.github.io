@@ -11,7 +11,6 @@
 
 <body>
 
-
     <!-- ===== NAVIGATION ===== -->
 
     <nav>
@@ -32,7 +31,6 @@
     <!-- ===== MAIN CARD ===== -->
 
     <div class="card">
-
 
         <h1>Hello, I am Madiha!</h1>
 
@@ -111,11 +109,17 @@
         </ul>
 
 
-        <!-- ===== LIKE / DISLIKE ===== -->
+        <!-- ===== VISITOR COUNTER ===== -->
 
         <div class="visitor-counter">
-            👀 Total Visitors: <span id="visitorCount">Loading...</span>
+
+            👀 Total Visitors:
+            <span id="visitorCount">Loading...</span>
+
         </div>
+
+
+        <!-- ===== LIKE / DISLIKE ===== -->
 
         <h2>What Do You Think?</h2>
 
@@ -173,26 +177,33 @@
         </button>
 
         <p id="message">
+
             Click the button!
+
         </p>
 
 
         <!-- ===== LIGHT / DARK ===== -->
 
         <button onclick="lightMode()">
+
             ☀️ Light Mode
+
         </button>
 
         <button onclick="darkMode()">
+
             🌙 Dark Mode
+
         </button>
 
 
         <!-- ===== PROFILE PHOTO ===== -->
 
         <img
-            src="photo.jpg"
+            src="photo.jpg.png"
             alt="My Photo">
+
 
         <p class="profile-text">
 
@@ -204,13 +215,17 @@
         <!-- ===== FEEDBACK ===== -->
 
         <h2 id="feedback">
+
             Your Feedback
+
         </h2>
 
         <div class="feedback-box">
 
             <p>
+
                 Tell me what I can improve on my website. 💡
+
             </p>
 
             <textarea
@@ -232,13 +247,17 @@
         <!-- ===== CONTACT ===== -->
 
         <h2 id="contact">
+
             Contact Me
+
         </h2>
 
         <div class="contact-box">
 
             <p>
+
                 Have a question or want to connect with me?
+
             </p>
 
             <a
@@ -258,10 +277,16 @@
 
     <footer>
 
-        <p>© 2026 Madiha's Website</p>
+        <p>
+
+            © 2026 Madiha's Website
+
+        </p>
 
         <p>
+
             Made with HTML, CSS and JavaScript
+
         </p>
 
     </footer>
@@ -304,6 +329,7 @@
                 "block";
 
             createConfetti();
+
         }
 
 
@@ -321,6 +347,7 @@
 
             document.getElementById("celebration").style.display =
                 "none";
+
         }
 
 
@@ -343,6 +370,7 @@
                     "scale(1)";
 
             }, 300);
+
         }
 
 
@@ -351,12 +379,14 @@
         function createConfetti() {
 
             let emojis = [
+
                 "🎉",
                 "✨",
                 "💜",
                 "💙",
                 "⭐",
                 "🎊"
+
             ];
 
             for (
@@ -411,6 +441,7 @@
                 }, 4000);
 
             }
+
         }
 
 
@@ -433,7 +464,9 @@
 
                 document.getElementById("feedbackText").value =
                     "";
+
             }
+
         }
 
 
@@ -460,12 +493,14 @@
         function createOpeningSparkles() {
 
             const sparkles = [
+
                 "✨",
                 "⭐",
                 "💫",
                 "💗",
                 "💛",
                 "💜"
+
             ];
 
             for (
@@ -517,6 +552,7 @@
                 }, 4500);
 
             }
+
         }
 
 
@@ -532,23 +568,27 @@
             "sb_publishable_9vDR8I_AxLzCZXSGpx6FeA_PQICTbda";
 
 
-        fetch(`${SUPABASE_URL}/rest/v1/rpc/increment_visitors`, {
+        fetch(
+            `${SUPABASE_URL}/rest/v1/rpc/increment_visitors`,
+            {
 
-            method: "POST",
+                method: "POST",
 
-            headers: {
+                headers: {
 
-                "apikey":
-                    SUPABASE_PUBLISHABLE_KEY,
+                    "apikey":
+                        SUPABASE_PUBLISHABLE_KEY,
 
-                "Authorization":
-                    `Bearer ${SUPABASE_PUBLISHABLE_KEY}`,
+                    "Authorization":
+                        `Bearer ${SUPABASE_PUBLISHABLE_KEY}`,
 
-                "Content-Type":
-                    "application/json"
+                    "Content-Type":
+                        "application/json"
+
+                }
+
             }
-
-        })
+        )
 
         .then(response => response.json())
 
@@ -565,6 +605,7 @@
                 "—";
 
         });
+
 
     </script>
 
