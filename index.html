@@ -3,131 +3,374 @@
 
 <head>
     <title>Madiha's Website</title>
+
     <link rel="stylesheet" href="style.css">
+
+    <style>
+
+        /* ===== CLICK ME MESSAGE ===== */
+
+        #message {
+            display: inline-block;
+            padding: 12px 22px;
+            border-radius: 15px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #ffffff;
+            background: linear-gradient(135deg, #7c3aed, #ec4899, #2563eb);
+            background-size: 200% 200%;
+            box-shadow: 0 8px 25px rgba(124, 58, 237, 0.35);
+            animation: messageGlow 3s ease infinite;
+            transition: 0.4s;
+        }
+
+        @keyframes messageGlow {
+
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+
+        }
+
+
+        /* ===== CONGRATULATIONS ===== */
+
+        #celebration {
+            display: none;
+            margin: 20px auto;
+            padding: 18px;
+            border-radius: 18px;
+            background: linear-gradient(135deg, #fef3c7, #fce7f3, #ede9fe);
+            color: #7c3aed;
+            font-size: 21px;
+            font-weight: bold;
+            box-shadow: 0 10px 30px rgba(124, 58, 237, 0.2);
+            animation: celebrationPop 0.6s ease;
+        }
+
+        @keyframes celebrationPop {
+
+            0% {
+                transform: scale(0.5);
+                opacity: 0;
+            }
+
+            70% {
+                transform: scale(1.08);
+            }
+
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+
+        }
+
+
+        /* ===== CONFETTI ===== */
+
+        .confetti {
+            position: fixed;
+            top: -20px;
+            font-size: 25px;
+            animation: fall 2s linear forwards;
+            z-index: 9999;
+            pointer-events: none;
+        }
+
+        @keyframes fall {
+
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(100vh) rotate(720deg);
+                opacity: 0;
+            }
+
+        }
+
+    </style>
+
 </head>
+
 
 <body>
 
+    <!-- ===== NAVIGATION ===== -->
+
     <nav>
+
         <a href="#about">About Me</a>
+
         <a href="#skills">My Skills</a>
+
         <a href="#goals">My Goals</a>
+
         <a href="#feedback">Feedback</a>
+
         <a href="#contact">Contact</a>
+
     </nav>
+
+
+    <!-- ===== MAIN CARD ===== -->
 
     <div class="card">
 
+
         <h1>Hello, I am Madiha!</h1>
+
 
         <p>
             I am a Class 10 student learning web development and coding.
         </p>
 
+
+        <!-- ===== ABOUT ME ===== -->
+
         <h2 id="about">About Me</h2>
 
+
         <p>
+
             Hello! I'm Madiha, a Class 10 student who is passionate about
             learning web development. I enjoy creating websites, exploring
             coding, and improving my skills step by step. My goal is to become
             a skilled developer and build useful websites in the future.
+
         </p>
+
+
+        <!-- ===== MY SKILLS ===== -->
 
         <h2 id="skills">My Skills</h2>
 
+
         <div class="skills-container">
 
+
             <div class="skill-card">
+
                 <h3>HTML</h3>
-                <p>Building the structure of websites.</p>
+
+                <p>
+                    Building the structure of websites.
+                </p>
+
             </div>
 
+
             <div class="skill-card">
+
                 <h3>CSS</h3>
-                <p>Designing and styling web pages.</p>
+
+                <p>
+                    Designing and styling web pages.
+                </p>
+
             </div>
 
+
             <div class="skill-card">
+
                 <h3>JavaScript</h3>
-                <p>Learning to make websites interactive.</p>
+
+                <p>
+                    Learning to make websites interactive.
+                </p>
+
             </div>
 
+
             <div class="skill-card">
+
                 <h3>Responsive Design</h3>
-                <p>Creating websites that work on different screens.</p>
+
+                <p>
+                    Creating websites that work on different screens.
+                </p>
+
             </div>
 
+
             <div class="skill-card">
+
                 <h3>Git & GitHub</h3>
-                <p>Learning how to manage and publish code.</p>
+
+                <p>
+                    Learning how to manage and publish code.
+                </p>
+
             </div>
 
+
             <div class="skill-card">
+
                 <h3>Problem Solving</h3>
-                <p>Improving my ability to solve coding problems.</p>
+
+                <p>
+                    Improving my ability to solve coding problems.
+                </p>
+
             </div>
+
 
         </div>
 
+
+        <!-- ===== GOALS ===== -->
+
         <h2 id="goals">My Goals</h2>
 
+
         <ul class="goals">
+
             <li>Become a skilled web developer</li>
+
             <li>Learn JavaScript deeply</li>
+
             <li>Build useful websites</li>
+
             <li>Improve my coding skills</li>
+
             <li>Earn through coding in the future</li>
+
         </ul>
 
+
+        <!-- ===== LIKE / DISLIKE ===== -->
+
         <h2>What Do You Think?</h2>
+
 
         <p>
             If you like my website, leave a reaction! 💜
         </p>
 
+
         <div class="reaction-box">
 
-            <button class="like-button" onclick="likeWebsite()">
+
+            <button
+                class="like-button"
+                onclick="likeWebsite()">
+
                 ❤️ Like <span id="likeCount">0</span>
+
             </button>
 
-            <button class="dislike-button" onclick="dislikeWebsite()">
+
+            <button
+                class="dislike-button"
+                onclick="dislikeWebsite()">
+
                 👎 Dislike <span id="dislikeCount">0</span>
+
             </button>
+
 
         </div>
 
-        <p id="reactionMessage" class="reaction-message">
+
+        <div id="celebration">
+
+            🎉 Congratulations! 🎉
+
+            <br>
+
+            Thank you for supporting my website! 💜✨
+
+        </div>
+
+
+        <p
+            id="reactionMessage"
+            class="reaction-message">
+
             Your feedback matters to me! ✨
+
         </p>
 
-        <button onclick="document.getElementById('message').innerHTML='Thanks for visiting my website! 💜'">
-            Click Me
+
+        <!-- ===== CLICK ME ===== -->
+
+
+        <button onclick="showMessage()">
+
+            ✨ Click Me ✨
+
         </button>
 
-        <p id="message">Click the button!</p>
 
-        <button onclick="document.body.style.backgroundColor='lightblue'">
-            Light Mode
+        <p id="message">
+
+            Click the button!
+
+        </p>
+
+
+        <!-- ===== LIGHT / DARK MODE ===== -->
+
+
+        <button
+            onclick="document.body.style.backgroundColor='lightblue'">
+
+            ☀️ Light Mode
+
         </button>
 
-        <button onclick="document.body.classList.toggle('dark-mode')">
-            Dark Mode
+
+        <button
+            onclick="document.body.classList.toggle('dark-mode')">
+
+            🌙 Dark Mode
+
         </button>
 
-        <img src="photo.jpg.png" alt="My Photo">
+
+        <!-- ===== PROFILE PHOTO ===== -->
+
+
+        <img
+            src="photo.jpg.png"
+            alt="My Photo">
+
 
         <p class="profile-text">
+
             Learning today, building my future with code.
+
         </p>
 
-        <h2 id="feedback">Your Feedback</h2>
+
+        <!-- ===== FEEDBACK ===== -->
+
+
+        <h2 id="feedback">
+            Your Feedback
+        </h2>
+
 
         <div class="feedback-box">
 
+
             <p>
+
                 Tell me what I can improve on my website. 💡
+
             </p>
+
 
             <textarea
                 id="feedbackText"
@@ -135,92 +378,311 @@
                 rows="4">
             </textarea>
 
+
             <button onclick="sendFeedback()">
-                Send Feedback 💌
+
+                💌 Send Feedback
+
             </button>
+
 
             <p id="feedbackMessage"></p>
 
+
         </div>
 
-        <h2 id="contact">Contact Me</h2>
+
+        <!-- ===== CONTACT ===== -->
+
+
+        <h2 id="contact">
+            Contact Me
+        </h2>
+
 
         <div class="contact-box">
 
+
             <p>
+
                 Have a question or want to connect with me?
+
             </p>
 
-            <a href="mailto:example@gmail.com" class="contact-button">
+
+            <a
+                href="mailto:example@gmail.com"
+                class="contact-button">
+
                 📧 Email Me
+
             </a>
+
 
         </div>
 
+
     </div>
+
+
+    <!-- ===== FOOTER ===== -->
+
 
     <footer>
 
-        <p>© 2026 Madiha's Website</p>
 
         <p>
-            Made with HTML, CSS and JavaScript
+
+            © 2026 Madiha's Website
+
         </p>
+
+
+        <p>
+
+            Made with HTML, CSS and JavaScript
+
+        </p>
+
 
     </footer>
 
+
+    <!-- ===== JAVASCRIPT ===== -->
+
     <script>
 
-        let likes = localStorage.getItem("likes") || 0;
-        let dislikes = localStorage.getItem("dislikes") || 0;
 
-        document.getElementById("likeCount").innerText = likes;
-        document.getElementById("dislikeCount").innerText = dislikes;
+        let likes =
+            localStorage.getItem("likes") || 0;
+
+
+        let dislikes =
+            localStorage.getItem("dislikes") || 0;
+
+
+        document.getElementById("likeCount").innerText =
+            likes;
+
+
+        document.getElementById("dislikeCount").innerText =
+            dislikes;
+
+
+
+        /* ===== LIKE ===== */
+
 
         function likeWebsite() {
 
+
             likes++;
 
-            localStorage.setItem("likes", likes);
 
-            document.getElementById("likeCount").innerText = likes;
+            localStorage.setItem(
+                "likes",
+                likes
+            );
 
-            document.getElementById("reactionMessage").innerText =
+
+            document.getElementById(
+                "likeCount"
+            ).innerText = likes;
+
+
+            document.getElementById(
+                "reactionMessage"
+            ).innerText =
                 "Thank you for liking my website! ❤️✨";
+
+
+            document.getElementById(
+                "celebration"
+            ).style.display = "block";
+
+
+            createConfetti();
+
+
         }
+
+
+
+        /* ===== DISLIKE ===== */
+
 
         function dislikeWebsite() {
 
+
             dislikes++;
 
-            localStorage.setItem("dislikes", dislikes);
 
-            document.getElementById("dislikeCount").innerText = dislikes;
+            localStorage.setItem(
+                "dislikes",
+                dislikes
+            );
 
-            document.getElementById("reactionMessage").innerText =
+
+            document.getElementById(
+                "dislikeCount"
+            ).innerText = dislikes;
+
+
+            document.getElementById(
+                "reactionMessage"
+            ).innerText =
                 "Thanks for your honest feedback! 💜";
+
+
+            document.getElementById(
+                "celebration"
+            ).style.display = "none";
+
+
         }
+
+
+
+        /* ===== CLICK ME ===== */
+
+
+        function showMessage() {
+
+
+            let message =
+                document.getElementById("message");
+
+
+            message.innerHTML =
+                "✨ Thanks for visiting my website! 💜 ✨";
+
+
+            message.style.transform =
+                "scale(1.08)";
+
+
+            setTimeout(function () {
+
+                message.style.transform =
+                    "scale(1)";
+
+            }, 300);
+
+
+        }
+
+
+
+        /* ===== CONFETTI ===== */
+
+
+        function createConfetti() {
+
+
+            let emojis = [
+                "🎉",
+                "✨",
+                "💜",
+                "💙",
+                "⭐",
+                "🎊"
+            ];
+
+
+            for (
+                let i = 0;
+                i < 25;
+                i++
+            ) {
+
+
+                let confetti =
+                    document.createElement("div");
+
+
+                confetti.className =
+                    "confetti";
+
+
+                confetti.innerText =
+                    emojis[
+                        Math.floor(
+                            Math.random() *
+                            emojis.length
+                        )
+                    ];
+
+
+                confetti.style.left =
+                    Math.random() * 100 + "vw";
+
+
+                confetti.style.animationDuration =
+                    (1.5 + Math.random() * 2) + "s";
+
+
+                document.body.appendChild(
+                    confetti
+                );
+
+
+                setTimeout(function () {
+
+                    confetti.remove();
+
+                }, 3500);
+
+
+            }
+
+        }
+
+
+
+        /* ===== FEEDBACK ===== */
+
 
         function sendFeedback() {
 
+
             let feedback =
-                document.getElementById("feedbackText").value;
+                document.getElementById(
+                    "feedbackText"
+                ).value;
 
-            if (feedback.trim() === "") {
 
-                document.getElementById("feedbackMessage").innerText =
+            if (
+                feedback.trim() === ""
+            ) {
+
+
+                document.getElementById(
+                    "feedbackMessage"
+                ).innerText =
                     "Please write some feedback first. 😊";
+
 
             } else {
 
-                document.getElementById("feedbackMessage").innerText =
-                    "Thank you for your feedback! 💜";
 
-                document.getElementById("feedbackText").value = "";
+                document.getElementById(
+                    "feedbackMessage"
+                ).innerText =
+                    "Thank you for your feedback! 💜✨";
+
+
+                document.getElementById(
+                    "feedbackText"
+                ).value = "";
+
+
             }
+
         }
 
+
     </script>
+
 
 </body>
 
