@@ -8,17 +8,13 @@
 
 <body>
 
-    <!-- ===== NAVIGATION ===== -->
-
     <nav>
         <a href="#about">About Me</a>
         <a href="#skills">My Skills</a>
         <a href="#goals">My Goals</a>
+        <a href="#feedback">Feedback</a>
         <a href="#contact">Contact</a>
     </nav>
-
-
-    <!-- ===== MAIN CARD ===== -->
 
     <div class="card">
 
@@ -28,9 +24,6 @@
             I am a Class 10 student learning web development and coding.
         </p>
 
-
-        <!-- ===== ABOUT ME ===== -->
-
         <h2 id="about">About Me</h2>
 
         <p>
@@ -39,9 +32,6 @@
             coding, and improving my skills step by step. My goal is to become
             a skilled developer and build useful websites in the future.
         </p>
-
-
-        <!-- ===== MY SKILLS ===== -->
 
         <h2 id="skills">My Skills</h2>
 
@@ -79,9 +69,6 @@
 
         </div>
 
-
-        <!-- ===== MY GOALS ===== -->
-
         <h2 id="goals">My Goals</h2>
 
         <ul class="goals">
@@ -92,10 +79,29 @@
             <li>Earn through coding in the future</li>
         </ul>
 
+        <h2>What Do You Think?</h2>
 
-        <!-- ===== BUTTONS ===== -->
+        <p>
+            If you like my website, leave a reaction! 💜
+        </p>
 
-        <button onclick="document.getElementById('message').innerHTML='Thanks for visiting my website!'">
+        <div class="reaction-box">
+
+            <button class="like-button" onclick="likeWebsite()">
+                ❤️ Like <span id="likeCount">0</span>
+            </button>
+
+            <button class="dislike-button" onclick="dislikeWebsite()">
+                👎 Dislike <span id="dislikeCount">0</span>
+            </button>
+
+        </div>
+
+        <p id="reactionMessage" class="reaction-message">
+            Your feedback matters to me! ✨
+        </p>
+
+        <button onclick="document.getElementById('message').innerHTML='Thanks for visiting my website! 💜'">
             Click Me
         </button>
 
@@ -109,17 +115,33 @@
             Dark Mode
         </button>
 
-
-        <!-- ===== PROFILE PHOTO ===== -->
-
         <img src="photo.jpg.png" alt="My Photo">
 
         <p class="profile-text">
             Learning today, building my future with code.
         </p>
 
+        <h2 id="feedback">Your Feedback</h2>
 
-        <!-- ===== CONTACT ===== -->
+        <div class="feedback-box">
+
+            <p>
+                Tell me what I can improve on my website. 💡
+            </p>
+
+            <textarea
+                id="feedbackText"
+                placeholder="Write your feedback here..."
+                rows="4">
+            </textarea>
+
+            <button onclick="sendFeedback()">
+                Send Feedback 💌
+            </button>
+
+            <p id="feedbackMessage"></p>
+
+        </div>
 
         <h2 id="contact">Contact Me</h2>
 
@@ -137,9 +159,6 @@
 
     </div>
 
-
-    <!-- ===== FOOTER ===== -->
-
     <footer>
 
         <p>© 2026 Madiha's Website</p>
@@ -149,6 +168,59 @@
         </p>
 
     </footer>
+
+    <script>
+
+        let likes = localStorage.getItem("likes") || 0;
+        let dislikes = localStorage.getItem("dislikes") || 0;
+
+        document.getElementById("likeCount").innerText = likes;
+        document.getElementById("dislikeCount").innerText = dislikes;
+
+        function likeWebsite() {
+
+            likes++;
+
+            localStorage.setItem("likes", likes);
+
+            document.getElementById("likeCount").innerText = likes;
+
+            document.getElementById("reactionMessage").innerText =
+                "Thank you for liking my website! ❤️✨";
+        }
+
+        function dislikeWebsite() {
+
+            dislikes++;
+
+            localStorage.setItem("dislikes", dislikes);
+
+            document.getElementById("dislikeCount").innerText = dislikes;
+
+            document.getElementById("reactionMessage").innerText =
+                "Thanks for your honest feedback! 💜";
+        }
+
+        function sendFeedback() {
+
+            let feedback =
+                document.getElementById("feedbackText").value;
+
+            if (feedback.trim() === "") {
+
+                document.getElementById("feedbackMessage").innerText =
+                    "Please write some feedback first. 😊";
+
+            } else {
+
+                document.getElementById("feedbackMessage").innerText =
+                    "Thank you for your feedback! 💜";
+
+                document.getElementById("feedbackText").value = "";
+            }
+        }
+
+    </script>
 
 </body>
 
